@@ -1,0 +1,7 @@
+@font-face
+{
+    font-family: 'DXIcons';
+    src: url(data:application/font-woff;base64,<base64.encoded.dxicons.woff.here);
+    font-weight: normal;
+    font-style: normal;
+}

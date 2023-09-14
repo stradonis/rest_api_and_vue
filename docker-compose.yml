@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+    php-fpm:
+        container_name: php-fpm
+        build:
+            context: docker/php-fpm
+        volumes:
+            - ./:/var/www
+        networks:
+            - test_network
+
+    nginx:
+        container_name: blog-nginx
+        build:
+            context: docker/nginx
+            args:
+                USER_ID: ${UID-1000}
+                GROUP_ID: ${GID-1000}
+        volumes:
+            - ./:/var/www/
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./docker/nginx/sites/:/etc/nginx/sites-available
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d
+            - ./docker/nginx/logs:/var/log/nginx
+        depends_on:
+            - php-fpm
+        ports:
+            - "8002:80"
+            - "443:443"
+        networks:
+            - test_network
+
+    encore:
+        build:
+            context: ./docker/encore
+            args:
+                USER_ID: ${UID-1000}
+        volumes:
+            - ./:/var/www
+        networks:
+            - test_network
+        tty: true
+
+networks:
+    test_network:
