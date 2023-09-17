@@ -5,15 +5,10 @@ namespace App\Controller;
 use App\Request\MessageRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Uid\Uuid;
-use Symfony\Component\Finder\Finder;
 use App\Files\MessageFilesOperation;
-use Throwable;
 
 #[Route('/api', name: 'api_')]
 class MessageController extends AbstractController

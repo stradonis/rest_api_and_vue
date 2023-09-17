@@ -6,11 +6,11 @@ namespace App\Request;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MessageRequest
+readonly class MessageRequest
 {
     public function __construct(
         #[Assert\NotBlank()]
-        public readonly string $message,
+        public string $message,
     ) {
     }
 }
