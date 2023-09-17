@@ -1,5 +1,6 @@
 # project launch
 
+go to it container
 docker exec -it php-fpm bash
 
 in the project directory
